@@ -3,6 +3,7 @@
  */
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <cstddef>
 
 using std::string;
@@ -16,6 +17,7 @@ int main(int argc, char *argv[])
     string s1;
     string s2 = "value";
     string s3("value");
+    const char *str = s3.c_str();
     string s4(s2);
     string s5 = s3;
     string s6(10, 'c');
@@ -37,7 +39,7 @@ int main(int argc, char *argv[])
     cout << s3[2] << endl;
     cout << "s2 == s3 " << (s2 == s3) << endl;
     cout << "s2 < s6 " << (s2 < s6) << endl;
-
+    cout << "cstring: " << str << endl;
     for (auto c : s2) {
         cout << c << endl;
     }
