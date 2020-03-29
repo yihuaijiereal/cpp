@@ -7,8 +7,16 @@
 #include <numeric>
 #include <iterator>
 #include <string>
+#include <fstream>
+#include <functional>
 
 using namespace std;
+using namespace std::placeholders;
+
+ostream &print(ostream &os, const string &s, char c)
+{
+	return os << s << c;
+}
 
 int main(int argc, char *argv[])
 {
@@ -17,9 +25,10 @@ int main(int argc, char *argv[])
     string s;
     string concat;
     int sum;
-    istream_iterator<int> in(cin), eof;
+    ofstream os("file");
+    //istream_iterator<int> in(cin), eof;
 
-    cout << accumulate(in, eof, 0) << endl;
+    //cout << accumulate(in, eof, 0) << endl;
 
     fill(vec.begin(), vec.end(), 1);
     sum = accumulate(vec.begin(), vec.end(), 0);
@@ -42,6 +51,14 @@ int main(int argc, char *argv[])
     }
     concat = accumulate(v.begin(), v.end(), string(""));
     cout << concat << endl;
+
+    for_each(v.begin(), v.end(),
+        bind(print, ref(cout), _1, ' '));
+    cout << endl;
+
+    for_each(v.begin(), v.end(),
+        bind(print, ref(os), _1, ' '));
+    cout << endl;
 
     return 0;
 }
