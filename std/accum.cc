@@ -17,6 +17,9 @@ int main(int argc, char *argv[])
     string s;
     string concat;
     int sum;
+    istream_iterator<int> in(cin), eof;
+
+    cout << accumulate(in, eof, 0) << endl;
 
     fill(vec.begin(), vec.end(), 1);
     sum = accumulate(vec.begin(), vec.end(), 0);
@@ -32,7 +35,7 @@ int main(int argc, char *argv[])
 
     fill_n(back_inserter(vec), 10, 42);
     sum = accumulate(vec.begin(), vec.end(), 0);
-    cout << sum << "of " << vec.size() << " elements" << endl;
+    cout << sum << " of " << vec.size() << " elements" << endl;
 
     while (cin >> s) {
         v.push_back(s);
